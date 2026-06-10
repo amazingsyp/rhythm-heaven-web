@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Smooth Operator</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <div id="frame">
+
+    <!-- Tap-to-Start gate (audio unlock) + sprite preload -->
+    <section id="screen-gate" class="screen active">
+      <div class="gate-inner">
+        <h1 class="logo">Smooth<br><span>Operator</span></h1>
+        <p id="gate-hint" class="gate-hint hidden">Tap anywhere to start</p>
+        <div id="gate-loading" class="gate-loading">
+          <p id="load-label" class="load-label">Loading sprites...</p>
+          <div class="load-bar"><div id="load-bar-fill" class="load-bar-fill"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Title -->
+    <section id="screen-title" class="screen">
+      <img class="title-mascot" src="assets/img/man-a-idle.png" alt="">
+      <h1 class="logo logo-big">Smooth<br><span>Operator</span></h1>
+      <p class="tagline">Stubborn stubble. You have tweezers.</p>
+      <p id="title-best" class="title-best hidden"></p>
+      <div class="menu-buttons">
+        <button id="btn-play" class="btn btn-primary">PLAY</button>
+        <button id="btn-settings" class="btn">Settings</button>
+      </div>
+      <p class="credit-line">Music &amp; SFX: CC0 (see CREDITS.md)</p>
+    </section>
+
+    <!-- Settings / Calibration -->
+    <section id="screen-settings" class="screen">
+      <header class="screen-header">
+        <button id="btn-settings-back" class="btn btn-small">&larr; Back</button>
+        <h2>Settings</h2>
+      </header>
+      <div class="settings-body">
+        <label class="setting-row">
+          <span>Music Volume</span>
+          <input type="range" id="vol-music" min="0" max="100" value="80">
+        </label>
+        <label class="setting-row">
+          <span>SFX Volume</span>
+          <input type="range" id="vol-sfx" min="0" max="100" value="90">
+        </label>
+        <div class="setting-row setting-col">
+          <span>Audio Offset: <strong id="cal-value">0</strong> ms</span>
+          <p class="setting-hint">Tap along with 8 metronome beeps to calibrate timing for your device.</p>
+          <button id="btn-calibrate" class="btn">Calibrate</button>
+          <button id="btn-cal-reset" class="btn btn-small">Reset to 0</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calibration tap screen -->
+    <section id="screen-calibrate" class="screen">
+      <h2>Calibration</h2>
+      <p id="cal-progress" class="cal-progress">Tap on every beep &mdash; 8 taps</p>
+      <div id="cal-pad" class="cal-pad"><span>TAP</span></div>
+      <button id="btn-cal-cancel" class="btn btn-small">Cancel</button>
+    </section>
+
+    <!-- Gameplay (main chart, all on canvas) -->
+    <section id="screen-game" class="screen">
+      <canvas id="game-canvas" width="480" height="720"></canvas>
+      <button id="btn-pause" class="btn btn-small btn-pause" aria-label="Pause">&#10074;&#10074;</button>
+
+      <div id="pause-overlay" class="overlay hidden">
+        <div class="overlay-card">
+          <h2>Paused</h2>
+          <button id="btn-resume" class="btn btn-primary">Resume</button>
+          <button id="btn-quit" class="btn">Quit</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Result — unwanted-hair checkup sheet -->
+    <section id="screen-result" class="screen">
+      <h2 class="result-heading">STUBBLE CHECKUP</h2>
+      <div class="result-sheet">
+        <img id="result-stamp" class="result-stamp" src="" alt="">
+        <div id="result-rank" class="result-rank">OK</div>
+        <p id="result-message" class="result-message"></p>
+        <div id="result-counts" class="result-counts"></div>
+        <p id="result-epilogue" class="result-epilogue"></p>
+      </div>
+      <div class="menu-buttons">
+        <button id="btn-retry" class="btn btn-primary">Play Again</button>
+        <button id="btn-result-title" class="btn">Title</button>
+      </div>
+    </section>
+
+  </div>
+</div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

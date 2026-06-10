@@ -1,0 +1,5 @@
+_workspace/
+_workspace_prev/
+.DS_Store
+.claude/
+CLAUDE.md
